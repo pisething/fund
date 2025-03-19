@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.piseth.ing.fund.dto.OrderDTO;
 import com.piseth.ing.fund.entity.Order;
+import com.piseth.ing.fund.exception.ResourceNotFoundException;
 import com.piseth.ing.fund.mapper.OrderMapper;
 import com.piseth.ing.fund.repository.InstrumentRepository;
 import com.piseth.ing.fund.service.FundService;
@@ -22,9 +23,9 @@ public class FundServiceImpl implements FundService{
 	public OrderDTO saveOrder(OrderDTO orderDTO) {
 		Order order = orderMapper.toOrder(orderDTO);
 		instrumentRepository.findById(order.getFundID())
-			.ifPresent(fund ->{
+			.ifPresentOrElse(fund ->{
 				fundValidation.validateOrder(order, fund);
-			});
+			}, () -> {throw new ResourceNotFoundException("Funds",order.getFundID());});
 		// Validation
 		
 		
