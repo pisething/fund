@@ -1,7 +1,6 @@
 package com.piseth.ing.fund.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,18 +22,6 @@ public class FundController {
 	public ResponseEntity<OrderDTO> saveOrder(@RequestBody OrderDTO orderDTO){
 		OrderDTO orderResponse = fundService.saveOrder(orderDTO);
 		return ResponseEntity.ok(orderResponse);
-	}
-	
-	@GetMapping("funds")
-	public ResponseEntity<?> getFunds(){
-		
-		return ResponseEntity.ok().build();
-	}
-	
-	@GetMapping("FIPrice")
-	public ResponseEntity<?> getFixedPrice(){
-		
-		return ResponseEntity.ok().build();
 	}
 
 }

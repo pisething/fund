@@ -19,8 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class FundValidation {
-	
-	
 
 	public void validateOrder(Order order, Instrument fund) {
 		Rule rule = fund.getRule();
@@ -71,7 +69,7 @@ public class FundValidation {
 	}
 	
 	private void validateMiddlePrice(Order order, Rule rule) {
-		BigDecimal middlePrice = rule.getMiddlePrice(); // 100
+		BigDecimal middlePrice = rule.getMiddlePrice();
 		
 		BigDecimal deviationPrice = middlePrice.multiply(BigDecimal.valueOf(rule.getPriceDeviationPercent() / 100));
 		
