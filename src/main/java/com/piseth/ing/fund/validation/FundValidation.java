@@ -1,6 +1,7 @@
 package com.piseth.ing.fund.validation;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import org.springframework.stereotype.Component;
 
@@ -41,7 +42,7 @@ public class FundValidation {
 	
 	private void validateMaxAmount(Order order, Rule rule) {
 		if(order.getAmount() > rule.getMaxAmount()) {
-			throw new MaxAmountException(order.getAmount());
+			throw new MaxAmountException(rule.getMaxAmount());
 		}
 	}
 	
@@ -71,7 +72,7 @@ public class FundValidation {
 	private void validateMiddlePrice(Order order, Rule rule) {
 		BigDecimal middlePrice = rule.getMiddlePrice();
 		
-		BigDecimal deviationPrice = middlePrice.multiply(BigDecimal.valueOf(rule.getPriceDeviationPercent() / 100));
+		BigDecimal deviationPrice = middlePrice.multiply(BigDecimal.valueOf(rule.getPriceDeviationPercent() / 100.0));
 		
 		BigDecimal sellPrice = middlePrice.add(deviationPrice);
 		BigDecimal buyPrice = middlePrice.subtract(deviationPrice);

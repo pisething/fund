@@ -33,8 +33,8 @@ public class FundServiceImpl implements FundService{
 		
 		
 		switch (orderDTO.getOrderType()){
-		case BUY : doBuy(orderDTO);
-		case SELL : doSell(orderDTO);
+		case BUY : doBuy(orderDTO); break;
+		case SELL : doSell(orderDTO); break;
 		}
 		
 		// Trigger event to notify other services
