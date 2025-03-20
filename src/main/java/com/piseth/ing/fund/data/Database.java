@@ -19,7 +19,7 @@ public class Database {
 	public Database() {
 		// rule base on each instrument
 		
-		Rule fundRule = new FundRule(3,2,2000,1000,100000); // For Mutual Funds and Index Funds
+		Rule fundRule = new FundRule(3,2,2000,1000); // For Mutual Funds and Index Funds
 		Rule fixedIncomeRule = new FixedIncomeRule(2,2000, BigDecimal.valueOf(1000.0),5); // For FixedIncome Funds
 		
 		Instrument mutualFund = new Instrument("001","Real Estate Fund",InstrumentType.MUTUAL_FUND, fundRule);

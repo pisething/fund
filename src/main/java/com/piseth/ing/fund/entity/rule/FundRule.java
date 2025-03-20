@@ -13,6 +13,5 @@ public class FundRule extends Rule{
 	private Integer decimalPoint;
 	private Integer maxAmount;
 	private Integer minAmount;
-	private Integer maxUnitToBuy;
 
 }
